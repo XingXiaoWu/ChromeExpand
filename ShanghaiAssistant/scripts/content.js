@@ -1,7 +1,3 @@
-// 监听，直到最后的时间出现
-// var importJs=document.createElement('script')
-// let dom = document.querySelector("#root > div > div.whomemain > div > div.whbiddingcontent > div.whbiddingitem.whbiddingleft > div.whpubinfo > div > div.detail-proinfo > span:nth-child(4)")
-// import "./dayjs.min.js"
 let interval1 = null
 // 判断是否开始
 const checkStart = () => {
@@ -47,6 +43,11 @@ const poll2 = () => {
     }, 1000)
 }
 
+const checkAuthInput = () => {
+    const authInput = document.querySelector("#root > div > div.whomemain > div > div.whbiddingcontent > div.whbiddingitem.whbiddingright > div.whSetPriceD > div.whpdContent > div.whpdtip > span")
+    return authInput ? true : false
+}
+
 // 监控时间变动
 const monitoringTime = () => {
     const button = document.querySelector("#root > div > div.whomemain > div > div.whbiddingcontent > div.whbiddingitem.whbiddingright > div.whbidcontent > div > div.whsecpro-content.whpricecontent > div.whsetprice-box > div.whsetpricebtn-box > div")
@@ -85,11 +86,39 @@ const monitoringTime = () => {
             inputOfPrice.dispatchEvent(evt)
             // 出价按钮点击
             button.click();
+            // 添加回车确定
+            enterSubmit()
+            poll3();
         }
         console.log(dif, low.textContent, up.textContent);
     }, 1000)
     // now.addEventListener("DOMSubtreeModified", timeChange(endTimeVal, low, up, inputOfPrice, button), false);
 }
 
+const poll3 = () => {
+    if (!interval1) {
+        clearInterval(interval1)
+        interval1 = null
+    }
+    interval1 = setInterval(() => {
+        if (checkAuthInput()) {
+            clearInterval(interval1)
+            const authCode = document.querySelector("#bidprice")
+            authCode.focus()
+        } else {
+            console.log('弹窗还没出来');
+        }
+    }, 1000)
+}
+const enterSubmit = () => {
+    document.onkeyup = (e) => {
+        let event = e || window.event;
+        let key = event.which || event.keyCode || event.charCode;
+        if (key === 13) {
+            const button = document.querySelector("#root > div > div.whomemain > div > div.whbiddingcontent > div.whbiddingitem.whbiddingright > div.whSetPriceD > div.whpdContent > div.whpdBtnbox > div.whpdConfirm.whpdBtnItem")
+            button.click();
+        }
+    }
+}
 
 poll1()
