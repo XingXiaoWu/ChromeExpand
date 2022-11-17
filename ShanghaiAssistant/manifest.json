@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "车牌助手",
+    "version": "1.0.0",
+    "description": "试试看能不能抢到",
+    "icons": {
+        "16": "images/icon.jpeg"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "scripts/dayjs.min.js",
+                "scripts/content.js"                
+            ],
+            "matches": [
+                "https://testh5.alltobid.com/*",
+                "https://paimai.alltobid.com/*"
+            ]
+        }
+    ],
+    "background": {
+        // Required
+        "service_worker": "background/background.js"
+        // Optional
+        // "type": ...
+      },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "nativeMessaging"
+    ]
+}
