@@ -56,9 +56,9 @@ const monitoringTime = () => {
     // 获取修改出价时段
     const end = document.querySelector("#root > div > div.whomemain > div > div.whbiddingcontent > div.whbiddingitem.whbiddingleft > div.whpubinfo > div > div.proinfo.red > span:nth-child(11) > span:nth-child(2)")
     // 获取当前时间的时间戳
-    const now = document.querySelector("#root > div > div.whomemain > div > div.whbiddingcontent > div.whbiddingitem.whbiddingleft > div.whpubinfo > div > div.detail-proinfo.secdetail-proinfo > span:nth-child(4) > span")
+    // const now = document.querySelector("#root > div > div.whomemain > div > div.whbiddingcontent > div.whbiddingitem.whbiddingleft > div.whpubinfo > div > div.detail-proinfo.secdetail-proinfo > span:nth-child(4) > span")
     // 获取价格区间
-    const low = document.querySelector("#root > div > div.whomemain > div > div.whbiddingcontent > div.whbiddingitem.whbiddingleft > div.whpubinfo > div > div.detail-proinfo.secdetail-proinfo > span:nth-child(10) > span > span:nth-child(1)")
+    // const low = document.querySelector("#root > div > div.whomemain > div > div.whbiddingcontent > div.whbiddingitem.whbiddingleft > div.whpubinfo > div > div.detail-proinfo.secdetail-proinfo > span:nth-child(10) > span > span:nth-child(1)")
     const up = document.querySelector("#root > div > div.whomemain > div > div.whbiddingcontent > div.whbiddingitem.whbiddingleft > div.whpubinfo > div > div.detail-proinfo.secdetail-proinfo > span:nth-child(10) > span > span:nth-child(2)")
     const today = dayjs().format("YYYY-MM-DD")
     const endTime = today + " " + end.textContent + ":00"
@@ -78,7 +78,7 @@ const monitoringTime = () => {
         // 当时间小于3秒的时候，计算出当前的范围
         if (dif < 4000) {
             clearInterval(interval1)
-            const b = (parseInt(low.textContent) + parseInt(up.textContent)) / 200 * 100
+            const b = up.textContent
             console.log(b);
             let evt = document.createEvent('HTMLEvents');
             evt.initEvent('input', true, true);
