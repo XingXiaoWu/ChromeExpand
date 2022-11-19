@@ -78,7 +78,7 @@ const monitoringTime = () => {
         // 当时间小于3秒的时候，计算出当前的范围
         if (dif < 4000) {
             clearInterval(interval1)
-            const b = up.textContent
+            const b = parseInt(up.textContent) + 100
             console.log(b);
             let evt = document.createEvent('HTMLEvents');
             evt.initEvent('input', true, true);
@@ -90,7 +90,7 @@ const monitoringTime = () => {
             enterSubmit()
             poll3();
         }
-        console.log(dif, low.textContent, up.textContent);
+        console.log(dif, up.textContent);
     }, 1000)
     // now.addEventListener("DOMSubtreeModified", timeChange(endTimeVal, low, up, inputOfPrice, button), false);
 }
