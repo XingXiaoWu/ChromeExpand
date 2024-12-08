@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+  <title>鹰图数据导出助手</title>
+  <style>
+    body {
+      min-width: 300px;
+    }
+
+    p,
+    label {
+      font:
+        1rem 'Fira Sans',
+        sans-serif;
+    }
+
+    input {
+      margin: 0.4rem;
+    }
+  </style>
+</head>
+
+<body>
+  <p>我都花积分查询了,导出还要收我一次积分?</p>
+
+  <div>
+    <input type="checkbox" id="ip" name="ip" checked />
+    <label for="ip">ip</label>
+  </div>
+  <div>
+    <input type="checkbox" id="domain" name="domain" checked />
+    <label for="domain">domain</label>
+  </div>
+  <div>
+    <input type="checkbox" id="port" name="port" checked />
+    <label for="port">port</label>
+  </div>
+  <div>
+    <input type="checkbox" id="title" name="title" checked />
+    <label for="title">title</label>
+  </div>
+  <button id="exportButton"> 一键输出</button>
+  <br>
+  <textarea style="width: 100%;" name="exportText" id="exportText" cols="10"></textarea>
+
+  <script src="./scripts/popup.js"></script>
+</body>
+
+</html>
